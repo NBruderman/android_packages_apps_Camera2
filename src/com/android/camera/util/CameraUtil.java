@@ -165,12 +165,6 @@ public class CameraUtil {
     // For setting video size before recording starts
     private static boolean sEarlyVideoSize;
 
-    // Workaround for QC cameras with broken face detection on front camera
-    private static boolean sNoFaceDetectOnFrontCamera;
-
-    // Samsung ZSL mode
-    private static boolean sEnableZSL;
-
     private CameraUtil() {
     }
 
@@ -187,8 +181,6 @@ public class CameraUtil {
         sSamsungCamMode = context.getResources().getBoolean(R.bool.needsSamsungCamMode);
         sHTCCamMode = context.getResources().getBoolean(R.bool.needsHTCCamMode);
         sEarlyVideoSize = context.getResources().getBoolean(R.bool.needsEarlyVideoSize);
-        sEnableZSL = context.getResources().getBoolean(R.bool.enableZSL);
-        sNoFaceDetectOnFrontCamera = context.getResources().getBoolean(R.bool.noFaceDetectOnFrontCamera);
     }
 
     public static int dpToPixel(int dp) {
@@ -201,18 +193,6 @@ public class CameraUtil {
 
     public static boolean useSamsungCamMode() {
         return sSamsungCamMode;
-    }
-
-    public static boolean needsEarlyVideoSize() {
-        return sEarlyVideoSize;
-    }
-
-    public static boolean enableZSL() {
-        return sEnableZSL;
-    }
-
-    public static boolean noFaceDetectOnFrontCamera() {
-        return sNoFaceDetectOnFrontCamera;
     }
 
     // Rotates the bitmap by the specified degree.
@@ -1023,5 +1003,10 @@ public class CameraUtil {
             ret = ret + "\t" + elems[i].toString() + '\n';
         }
         return ret;
+    }
+    
+
+    public static boolean needsEarlyVideoSize() {
+         return sEarlyVideoSize;
     }
 }
